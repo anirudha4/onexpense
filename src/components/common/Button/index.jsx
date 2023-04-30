@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { ImSpinner2 } from 'react-icons/im';
 
 const buttonVariants = cva(
@@ -30,7 +30,7 @@ const buttonVariants = cva(
     }
 )
 
-const Button = ({
+const Button = forwardRef(({
     onClick,
     icon = null,
     variant = 'default',
@@ -39,13 +39,13 @@ const Button = ({
     loading,
     className,
     children
-}) => {
+}, ref) => {
     return (
-        <button type='submit' className={buttonVariants({ variant, size, className })} onClick={onClick} disabled={disabled || loading}>
+        <button ref={ref} type='submit' className={buttonVariants({ variant, size, className })} onClick={onClick} disabled={disabled || loading}>
             {loading ? (<ImSpinner2 className='animate-spin' />) : icon}
             {children}
         </button>
     )
-}
+})
 
 export default Button

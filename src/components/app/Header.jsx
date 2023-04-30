@@ -7,7 +7,7 @@ import Profile from './Profile';
 const Header = ({ }) => {
     const { user } = useAuth();
     return (
-        <div className="flex h-16 items-center justify-between px-4 border-b">
+        <div className="flex h-16 min-h-[4rem] items-center justify-between px-4 border-b">
             <div className="flex items-center gap-5">
                 {/* logo */}
                 <Logo />

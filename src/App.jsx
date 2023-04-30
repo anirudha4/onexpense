@@ -32,6 +32,7 @@ const App = () => {
           element: <DashboardLayout />,
           children: [
             {
+              index: true,
               element: <Dashboard />
             }
           ]
