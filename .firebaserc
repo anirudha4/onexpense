@@ -1,0 +1,11 @@
+{
+  "projects": {
+    "default": "one-app-ad983"
+  },
+  "targets": {},
+  "etags": {
+    "one-app-ad983": {
+      "extensionInstances": {}
+    }
+  }
+}
