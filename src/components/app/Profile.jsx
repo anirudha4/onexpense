@@ -4,7 +4,7 @@ import useTheme from '@hooks/useTheme';
 const Profile = () => {
     const { toggleTheme } = useTheme();
     return (
-        <div className='bg-accent rounded-md h-10 w-10 cursor-pointer' onClick={toggleTheme}>
+        <div className='bg-accent rounded-md h-10 w-10 cursor-pointer'>
             <Avatar_1 className="h-full w-full" />
         </div>
     )

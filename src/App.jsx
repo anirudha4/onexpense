@@ -10,6 +10,8 @@ import Insights from '@pages/insights';
 import InvoicesLayout from '@pages/invoices/InvoicesLayout';
 import Invoices from '@pages/invoices';
 import Layout from '@pages/Layout';
+import LoansLayout from '@pages/loans/LoansLayout';
+import Loans from '@pages/loans/Loans';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -54,6 +56,16 @@ const App = () => {
             {
               index: true,
               element: <Invoices />
+            }
+          ]
+        },
+        {
+          path: PATHS.LOANS,
+          element: <LoansLayout />,
+          children: [
+            {
+              index: true,
+              element: <Loans />
             }
           ]
         }

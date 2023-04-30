@@ -34,6 +34,7 @@
         --destructive: hsl(0, 100%, 67%);
         --destructive-foreground: hsl(210 40% 98%);
 
+        --rdp-background-color: transparent;
         --radius: 0.5rem;
     }
 
@@ -59,13 +60,15 @@
         --secondary: hsl(222.2 47.4% 11.2%);
         --secondary-foreground: hsl(210 40% 98%);
 
-        --accent: hsl(216, 20%, 19%);
+        --accent: hsl(216 34% 17%);
         --accent-foreground: hsl(210 40% 98%);
 
         --destructive: hsl(0 63% 31%);
         --destructive-foreground: hsl(210 40% 98%);
 
         --radius: 0.5rem;
+
+        --rdp-background-color: transparent;
     }
 }
 

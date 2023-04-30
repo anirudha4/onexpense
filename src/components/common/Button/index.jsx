@@ -2,8 +2,8 @@ import { cva } from 'class-variance-authority';
 import React, { forwardRef } from 'react'
 import { ImSpinner2 } from 'react-icons/im';
 
-const buttonVariants = cva(
-    "inline-flex items-center justify-center gap-4 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed",
+export const buttonVariants = cva(
+    "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed",
     {
         variants: {
             variant: {

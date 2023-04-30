@@ -1,5 +1,5 @@
 import React, { createContext } from 'react'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { useImmerReducer } from 'use-immer';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -59,13 +59,16 @@ const AuthProvider = ({ children }) => {
         }
     }
 
+    const logout = () => signOut(authentication);
+
     const values = {
         ...state,
         isLoading,
         user,
         login,
         standardLogin,
-        register
+        register,
+        logout
     }
     if (isLoading) {
         return (
