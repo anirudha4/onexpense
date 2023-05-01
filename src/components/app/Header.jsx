@@ -1,6 +1,7 @@
 import Logo from '@components/common/Logo';
 import Navbar from './Navbar';
 import Profile from './Profile';
+import Dropdown from '@components/common/Dropdown';
 
 const Header = ({ }) => {
     return (
@@ -13,7 +14,7 @@ const Header = ({ }) => {
                 {/* navbar */}
                 <Navbar />
             </div>
-            <Profile />
+            <Dropdown trigger={<Profile />} />
         </div>
     )
 }

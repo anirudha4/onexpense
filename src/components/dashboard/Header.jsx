@@ -1,6 +1,6 @@
 import Button from '@components/common/Button'
 import DatePicker from '@components/common/DatePicker'
-import useFilter from '@hooks/useFilter'
+import { useFilter } from '@hooks'
 import { Popover, PopoverContent, PopoverTrigger } from '@radix-ui/react-popover'
 import classNames from 'classnames'
 import { format } from 'date-fns'

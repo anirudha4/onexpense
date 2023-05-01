@@ -13,7 +13,8 @@ exports.createDefaultDataForUser = functions.auth.user().onCreate(async (user) =
         email: user.email,
         name: user.displayName,
         photoURL: user.photoURL,
-        userId: uid
+        userId: uid,
+        isVerified:  user.emailVerified
     });
 
     await db.collection('user_preference').doc(uid).set({

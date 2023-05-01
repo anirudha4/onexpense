@@ -27,6 +27,7 @@ const AuthProvider = ({ children }) => {
     const [user, isLoading] = useAuthState(authentication, {
         onUserChanged: (user) => user ? dispatch(authCreators.authSuccess()) : dispatch(authCreators.authLogout())
     });
+    console.log(user);
     const login = async () => {
         try {
             dispatch(authCreators.authRequest());
