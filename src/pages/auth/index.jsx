@@ -1,10 +1,10 @@
 import React, { useMemo, useState } from 'react'
-import AuthLayout from './AuthLayout'
-import Form from '@components/common/Form'
-import Button from '@components/common/Button'
 import { ImGoogle } from 'react-icons/im'
 import { useAuth, useForm } from '@hooks'
 import Alert from '@components/common/Alert'
+import AuthLayout from './AuthLayout'
+import Button from '@components/common/Button'
+import Form from '@components/common/Form'
 
 const FORM_TYPE = {
     LOGIN: 'LOGIN',

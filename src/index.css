@@ -34,8 +34,20 @@
         --destructive: hsl(0, 100%, 67%);
         --destructive-foreground: hsl(210 40% 98%);
 
-        --rdp-background-color: transparent;
         --radius: 0.5rem;
+    }
+
+    .rdp {
+        --rdp-cell-size: 40px;
+        --rdp-accent-color: hsl(222.2 47.4% 11.2%);
+        --rdp-background-color: hsl(222.2 47.4% 11.2%);
+        /* Switch to dark colors for dark themes */
+        --rdp-accent-color-dark: hsl(222.2 47.4% 11.2%);
+        --rdp-background-color-dark: hsl(222.2 47.4% 11.2%);
+        /* Outline border for focused elements */
+        --rdp-outline: 2px solid var(--rdp-accent-color);
+        /* Outline border for focused and selected elements */
+        --rdp-outline-selected: 2px solid hsl(222.2 47.4% 11.2%);
     }
 
     .dark {
@@ -69,6 +81,19 @@
         --radius: 0.5rem;
 
         --rdp-background-color: transparent;
+    }
+
+    .dark .rdp {
+        --rdp-cell-size: 40px;
+        --rdp-accent-color: hsl(216 34% 17%);
+        --rdp-background-color: hsl(213 31% 91%);
+        /* Switch to dark colors for dark themes */
+        --rdp-accent-color-dark: hsl(216 34% 17%);
+        --rdp-background-color-dark: hsl(213 31% 91%);
+        /* Outline border for focused elements */
+        --rdp-outline: 2px solid var(--rdp-accent-color);
+        /* Outline border for focused and selected elements */
+        --rdp-outline-selected: 2px solid hsl(213 31% 91%);
     }
 }
 

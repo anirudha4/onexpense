@@ -1,17 +1,17 @@
 import React from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Dashboard from '@pages/dashboard';
+import Layout from '@pages/Layout';
 import DashboardLayout from '@pages/dashboard/DashboardLayout';
+import Dashboard from '@pages/dashboard';
 import AuthLayout from '@pages/auth/AuthLayout';
 import Login from '@pages/auth';
-import { PATHS } from '@config/constants';
 import InsightsLayout from '@pages/insights/InsightsLayout';
 import Insights from '@pages/insights';
 import InvoicesLayout from '@pages/invoices/InvoicesLayout';
 import Invoices from '@pages/invoices';
-import Layout from '@pages/Layout';
 import LoansLayout from '@pages/loans/LoansLayout';
 import Loans from '@pages/loans/Loans';
+import { PATHS } from '@config/constants';
 
 const App = () => {
   const router = createBrowserRouter([
