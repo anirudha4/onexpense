@@ -27,7 +27,8 @@ export default defineConfig({
       '@actions': path.resolve(__dirname, './src/actions'),
       '@reducers': path.resolve(__dirname, './src/reducers'),
       '@lib': path.resolve(__dirname, './src/lib'),
-      '@config': path.resolve(__dirname, './src/config')
+      '@config': path.resolve(__dirname, './src/config'),
+      '@styles': path.resolve(__dirname, './src/styles'),
     },
   },
   server: {

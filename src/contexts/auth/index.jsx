@@ -21,13 +21,13 @@ const initialState = {
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-
     const [state, dispatch] = useImmerReducer(auth, initialState);
 
     const [user, isLoading] = useAuthState(authentication, {
         onUserChanged: (user) => user ? dispatch(authCreators.authSuccess()) : dispatch(authCreators.authLogout())
     });
-    console.log(user);
+
+    // handlers
     const login = async () => {
         try {
             dispatch(authCreators.authRequest());

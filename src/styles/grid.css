@@ -1,0 +1,11 @@
+.statistics-grid {
+    @apply p-4;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+}

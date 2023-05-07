@@ -1,9 +1,15 @@
 import Header from "@components/dashboard/Header"
+import Statistics from "@components/dashboard/Statistics"
+import Transactions from "@components/dashboard/Transactions"
 
 const Dashboard = () => {
     return (
-        <div className="p-4 h-full">
+        <div className="h-full flex flex-col relative">
             <Header />
+            <Statistics />
+            <div className="dashboard-grid">
+                <Transactions />
+            </div>
         </div>
     )
 }

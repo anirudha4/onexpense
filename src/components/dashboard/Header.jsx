@@ -9,7 +9,7 @@ import { CiCalendar } from 'react-icons/ci'
 const Header = () => {
     const { selectedDate, selectDate, clearDate } = useFilter();
     return (
-        <div className='flex items-center justify-between'>
+        <div className='flex items-center justify-between p-4'>
             <div className="text-3xl font-bold">
                 Dashboard
             </div>
@@ -25,8 +25,8 @@ const Header = () => {
                                     !selectedDate && "text-muted-foreground"
                                 )}
                             >
-                                <CiCalendar strokeWidth={1} size={18}  />
-                                {selectedDate ? format(selectedDate, "PPP") : <span className='font-semibold'>Pick a date</span>}
+                                <CiCalendar strokeWidth={1} size={18} />
+                                {selectedDate ? format(selectedDate, "PPP") : <span className='font-semibold'>Filter by date</span>}
                             </Button>
                         </div>
                     </PopoverTrigger>
@@ -41,8 +41,8 @@ const Header = () => {
                         />
                     </PopoverContent>
                 </Popover>
-                {selectedDate && (
-                    <Button onClick={clearDate} variant="link">Clear</Button>
+                {(selectedDate && selectedDate === new Date()) && (
+                    <Button onClick={clearDate} variant="link">Reset</Button>
                 )}
             </div>
         </div>

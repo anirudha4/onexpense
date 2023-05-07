@@ -19,9 +19,9 @@ const Navbar = () => {
                     'px-3 py-2 text-sm rounded font-medium',
                     'flex items-center gap-2',
                     'duration-100',
-                    'hover:bg-accent',
+                    'hover:bg-secondary',
                     {
-                        'bg-accent font-semibold': isActive
+                        'bg-secondary font-semibold': isActive
                     }
                 )}
                     to={link.route}

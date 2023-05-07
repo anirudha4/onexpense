@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 export const ThemeContext = createContext({
     theme: 'light'
@@ -14,6 +14,9 @@ const ThemeProvider = ({ children }) => {
             setTheme('dark');
         }
     }
+    useEffect(() => {
+        document.body.classList.add(theme);
+    }, [])
     return (
         <div className={classNames('bg-background text-foreground', {
             'dark': theme === 'dark',

@@ -22,17 +22,17 @@
         --card: hsl(0 0% 100%);
         --card-foreground: hsl(222.2 47.4% 11.2%);
 
-        --primary: hsl(222.2 47.4% 11.2%);
-        --primary-foreground: hsl(210 40% 98%);
+        --primary: #0e9274;
+        --primary-foreground: #f2ffea;
 
         --secondary: hsl(210 40% 96.1%);
-        --secondary-foreground: hsl(222.2 47.4% 11.2%);
+        --secondary-foreground: hsl(216deg 45.77% 6.48%);
 
-        --accent: hsl(210 40% 96.1%);
+        --accent: hsl(210, 25%, 91%);
         --accent-foreground: hsl(222.2 47.4% 11.2%);
 
         --destructive: hsl(0, 100%, 67%);
-        --destructive-foreground: hsl(210 40% 98%);
+        --destructive-foreground: hsl(0, 100%, 98%);
 
         --radius: 0.5rem;
     }
@@ -66,19 +66,19 @@
         --card: hsl(224 71% 4%);
         --card-foreground: hsl(213 31% 91%);
 
-        --primary: hsl(210 40% 98%);
-        --primary-foreground: hsl(222.2 47.4% 1.2%);
+        --primary: #349188;
+        --primary-foreground: #e2fffc;
 
-        --secondary: hsl(222.2 47.4% 11.2%);
+        --secondary: hsl(216deg 45.77% 6.48%);
         --secondary-foreground: hsl(210 40% 98%);
 
         --accent: hsl(216 34% 17%);
         --accent-foreground: hsl(210 40% 98%);
 
-        --destructive: hsl(0 63% 31%);
-        --destructive-foreground: hsl(210 40% 98%);
+        --destructive: hsl(0, 100%, 98%);
+        --destructive-foreground: hsl(0, 100%, 73%);
 
-        --radius: 0.5rem;
+        --radius: .5rem;
 
         --rdp-background-color: transparent;
     }

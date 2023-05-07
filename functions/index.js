@@ -9,18 +9,17 @@ const db = admin.firestore();
 exports.createDefaultDataForUser = functions.auth.user().onCreate(async (user) => {
     const { uid } = user;
 
-    await db.collection('user_account').doc(uid).set({
+    await db.collection('users').doc(uid).set({
         email: user.email,
         name: user.displayName,
         photoURL: user.photoURL,
         userId: uid,
-        isVerified:  user.emailVerified
+        isVerified: user.emailVerified
     });
 
-    await db.collection('user_preference').doc(uid).set({
+    await db.collection(`users/${uid}/preferences`).add({
         theme: 'light',
         userId: uid,
-
     });
 
     for (const category of ENTITIES.CATEGORIES) {

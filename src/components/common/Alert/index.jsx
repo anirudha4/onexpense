@@ -4,13 +4,13 @@ import { cva } from 'class-variance-authority'
 import classNames from 'classnames';
 
 const alertVariants = cva(
-    "relative w-full rounded flex items-center gap-3",
+    "relative h-10 w-full rounded-md flex items-center gap-3 px-4 muted-text text-sm font-medium",
     {
         variants: {
             variant: {
                 default: "text-accent",
                 destructive:
-                    "text-destructive-foreground border-destructive/50 dark:border-destructive text-destructive",
+                    "bg-destructive-foreground dark:border-destructive text-destructive",
             },
         },
         defaultVariants: {
@@ -23,16 +23,18 @@ const Alert = ({
     className,
     variant,
     text,
-    icon = <BiInfoCircle />,
+    icon = <BiInfoCircle size={20} />,
     props
 }) => {
     return (
         <div
             role="alert"
-            className={classNames(alertVariants({ variant }), className, 'muted-text text-sm')}
+            className={classNames(alertVariants({ variant }), className)}
             {...props}
         >
-            {icon}
+            {React.cloneElement(icon, {
+                size: 20
+            })}
             {text}
         </div>
     )

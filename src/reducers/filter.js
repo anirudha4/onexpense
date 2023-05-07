@@ -6,7 +6,7 @@ export default (draft, action) => {
             draft.selectedDate = action.date;
             break;
         case filterTypes.CLEAR_DATE_REQUEST:
-            draft.selectedDate = null;
+            draft.selectedDate = new Date();
             break;
         default:
             break;

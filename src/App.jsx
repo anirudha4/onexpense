@@ -13,6 +13,9 @@ import LoansLayout from '@pages/loans/LoansLayout';
 import Loans from '@pages/loans/Loans';
 import { PATHS } from '@config/constants';
 
+// styles
+import '@styles/grid.css';
+
 const App = () => {
   const router = createBrowserRouter([
     {
