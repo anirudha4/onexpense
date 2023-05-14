@@ -25,7 +25,7 @@
         --primary: #0e9274;
         --primary-foreground: #f2ffea;
 
-        --secondary: hsl(210 40% 96.1%);
+        --secondary: hsl(223, 33%, 96%);
         --secondary-foreground: hsl(216deg 45.77% 6.48%);
 
         --accent: hsl(210, 25%, 91%);
@@ -69,7 +69,7 @@
         --primary: #349188;
         --primary-foreground: #e2fffc;
 
-        --secondary: hsl(216deg 45.77% 6.48%);
+        --secondary: hsl(216, 38%, 10%);
         --secondary-foreground: hsl(210 40% 98%);
 
         --accent: hsl(216 34% 17%);
@@ -111,4 +111,8 @@
 
 .muted-text {
     font-family: 'Inter', 'DM Sans', sans-serif;
+}
+
+.container {
+    @apply max-w-[1200px] w-full mx-auto;
 }

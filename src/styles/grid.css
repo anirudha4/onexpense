@@ -9,3 +9,8 @@
     grid-template-columns: repeat(2, 1fr);
     height: 100%;
 }
+.transaction-grid {
+    display: grid;
+    gap: 20px;
+    transition: all .2s;
+}

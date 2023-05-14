@@ -9,7 +9,7 @@ const Stat = ({
     muted
 }) => {
     return (
-        <div className='w-full border p-4 rounded-md flex flex-col'>
+        <div className='w-full border p-4 rounded-md flex flex-col border-b-2'>
             <div className="flex items-center justify-between mb-2">
                 <p className='text-md font-medium'>{title}</p>
                 <div className="text-muted-foreground">

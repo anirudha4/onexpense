@@ -4,12 +4,10 @@ import Transactions from "@components/dashboard/Transactions"
 
 const Dashboard = () => {
     return (
-        <div className="h-full flex flex-col relative">
+        <div className="flex flex-col relative h-full">
             <Header />
             <Statistics />
-            <div className="dashboard-grid">
-                <Transactions />
-            </div>
+            <Transactions />
         </div>
     )
 }

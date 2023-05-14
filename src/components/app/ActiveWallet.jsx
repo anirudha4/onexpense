@@ -3,7 +3,7 @@ import { TbCashBanknote } from 'react-icons/tb'
 
 const ActiveWallet = () => {
     return (
-        <div className='h-10 rounded-md border flex items-center justify-center cursor-pointer' title='Cash Wallet'>
+        <div className='h-10 bg-background rounded-md border flex items-center justify-center cursor-pointer' title='Cash Wallet'>
             <div className="px-4 text-sm font-medium border-r">
                 <TbCashBanknote size={20} />
             </div>

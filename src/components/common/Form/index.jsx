@@ -1,6 +1,7 @@
 import React from 'react'
 import Input from './Input'
 import classNames from 'classnames';
+import Select from './Select';
 
 const Form = ({ children, onSubmit, width, className }) => {
     const handleSubmit = (e) => {
@@ -14,6 +15,6 @@ const Form = ({ children, onSubmit, width, className }) => {
     )
 }
 
-export default Form
-
 Form.Input = Input;
+Form.Select = Select;
+export default Form

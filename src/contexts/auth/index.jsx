@@ -7,8 +7,8 @@ import { auth } from '@reducers';
 import { authCreators } from '@actions';
 import { authentication, gProvider } from '@config/firebase';
 import { redirectTo } from '@utils/redirect';
-import { ImSpinner2 } from 'react-icons/im';
 import { PATHS } from '@config/constants';
+import Loader from '@components/app/AppLoader';
 
 // initial state
 const initialState = {
@@ -73,9 +73,7 @@ const AuthProvider = ({ children }) => {
     }
     if (isLoading) {
         return (
-            <div className='h-screen flex items-center justify-center'>
-                <ImSpinner2 size={30} className='animate-spin text-accent-foreground' />
-            </div>
+            <Loader />
         )
     }
     return (

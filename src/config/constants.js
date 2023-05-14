@@ -3,5 +3,13 @@ export const PATHS = {
     DASHBOARD: 'dashboard',
     INVOICES: 'invoices',
     INSIGHTS: 'insights',
-    LOANS: 'loans'
+    LOANS: 'loans',
+    TRANSACTION: '/app/dashboard/transaction/:transaction_id',
+
+
+    // 
+    PROFILE: '/account',
+    CATEGORIES: '/account/categories',
+    WALLETS: '/account/wallets',
+
 }

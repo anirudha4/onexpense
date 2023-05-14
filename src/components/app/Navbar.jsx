@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import classNames from 'classnames'
-import { BsEyeglasses } from 'react-icons/bs';
 
 import { PATHS } from '@config/constants'
 

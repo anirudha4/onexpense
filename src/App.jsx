@@ -15,6 +15,9 @@ import { PATHS } from '@config/constants';
 
 // styles
 import '@styles/grid.css';
+import AccountLayout from '@pages/accounts/AccountLayout';
+import Profile from '@pages/accounts';
+import ManageCategories from '@pages/accounts/ManageCategories';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -38,6 +41,10 @@ const App = () => {
           children: [
             {
               index: true,
+              element: <Dashboard />
+            },
+            {
+              path: PATHS.TRANSACTION,
               element: <Dashboard />
             }
           ]
@@ -74,6 +81,20 @@ const App = () => {
         }
       ]
     },
+    {
+      path: PATHS.PROFILE,
+      element: <AccountLayout />,
+      children: [
+        {
+          index: true,
+          element: <Profile />
+        },
+        {
+          path: PATHS.CATEGORIES,
+          element: <ManageCategories />
+        }
+      ]
+    }
   ])
   return (
     <RouterProvider router={router} />

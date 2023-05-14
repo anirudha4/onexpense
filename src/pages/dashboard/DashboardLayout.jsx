@@ -3,7 +3,9 @@ import { Outlet } from 'react-router-dom'
 
 const DashboardLayout = () => {
     return (
-        <Outlet />
+        <div className="container h-full">
+            <Outlet />
+        </div>
     )
 }
 

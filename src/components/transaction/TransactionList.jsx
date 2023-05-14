@@ -1,31 +1,46 @@
-import React from 'react'
-import { BsPiggyBank } from 'react-icons/bs';
-import { MdOutlineLocalGroceryStore, MdOutlineMovieFilter } from 'react-icons/md';
-import { TbCashBanknote, TbHomeDollar } from 'react-icons/tb';
+// import { BsPiggyBank } from 'react-icons/bs';
+// import { MdOutlineLocalGroceryStore, MdOutlineMovieFilter } from 'react-icons/md';
+// import { TbCashBanknote, TbHomeDollar } from 'react-icons/tb';
+import { HiOutlineInboxStack } from 'react-icons/hi2';
+import { useTransaction } from '@hooks';
 import TransactionItem from './TransactionItem';
+import Loader from '@components/app/Loader';
 
 const TransactionList = () => {
-    const data = [
-        { id: 1, name: 'Movies Night', type: 'expense', amount: '100.00', category: 'Entertainment', categoryIcon: <MdOutlineMovieFilter /> },
-        { id: 2, name: 'Salary', type: 'income', amount: '100000.00', category: 'Salary', categoryIcon: <TbCashBanknote /> },
-        { id: 3, name: 'House Rent', type: 'expense', amount: '20000.00', category: 'Rent', categoryIcon: <TbHomeDollar /> },
-        { id: 4, name: 'Tax Saving Mutual Fund', type: 'investment', amount: '30000.00', category: 'Investment', categoryIcon: <BsPiggyBank /> },
-        { id: 5, name: 'Groceries for April', type: 'expense', amount: '5000.00', category: 'Groceries', categoryIcon: <MdOutlineLocalGroceryStore /> },
-        { id: 1, name: 'Netflix Subscription', type: 'expense', amount: '100.00', category: 'Entertainment', categoryIcon: <MdOutlineMovieFilter /> },
-        { id: 2, name: 'Salary', type: 'income', amount: '100000.00', category: 'Salary', categoryIcon: <TbCashBanknote /> },
-        { id: 3, name: 'House Rent', type: 'expense', amount: '20000.00', category: 'Rent', categoryIcon: <TbHomeDollar /> },
-        { id: 4, name: 'Tax Saving Mutual Fund', type: 'investment', amount: '30000.00', category: 'Investment', categoryIcon: <BsPiggyBank /> },
-        { id: 5, name: 'Groceries for April', type: 'expense', amount: '5000.00', category: 'Groceries', categoryIcon: <MdOutlineLocalGroceryStore /> },
+    const gridTemplateColumns = '1fr';
+    const { transactions, loading } = useTransaction();
 
-    ]
+    if (loading) {
+        return (<Loader />)
+    }
     return (
-        <div className='flex flex-col gap-2 pb-3 max-h-full overflow-y-scroll'>
-            {data.map(transaction => (
-                <TransactionItem
-                    {...transaction}
-                />
-            ))}
-        </div>
+        <>
+            <div style={{ gridTemplateColumns }} className='transaction-grid'>
+                {loading ? (
+                    <div className="flex items-center justify-center mt-20 flex-col gap-4">
+                        <Loader />
+                    </div>
+                ) : (
+                    <>
+                        {transactions.length === 0 && (
+                            <div className="flex items-center justify-center mt-20 flex-col gap-4">
+                                <HiOutlineInboxStack size={100} className='text-muted-foreground' />
+                                <div className="text-2xl muted-text text-muted-foreground">
+                                    No Transactions.
+                                </div>
+                            </div>
+                        )}
+                        {transactions.map(transaction => (
+                            <TransactionItem
+                                key={transaction.id}
+                                {...transaction}
+                                isGridView={false}
+                            />
+                        ))}
+                    </>
+                )}
+            </div >
+        </>
     )
 }
 
