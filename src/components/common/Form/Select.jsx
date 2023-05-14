@@ -27,7 +27,7 @@ const Select = ({
     };
 
     const handleClose = () => setIsOpen(false);
-    // const handleOpen = () => setIsOpen(true);
+    const handleOpen = () => setIsOpen(true);
     const toggleSelect = () => setIsOpen(!isOpen);
 
     useEffect(() => {
@@ -54,18 +54,24 @@ const Select = ({
 
     return (
         <Context.Provider value={{ onChange, value, name }}>
-            <div className="relative w-full cursor-pointer" ref={selectRef} style={{ width }}>
-                <Input
-                    readOnly
-                    value={value.label}
-                    placeholder={placeholder}
-                    label={label}
-                    name={name}
-                    id={id}
-                    onClick={toggleSelect}
-                    // onFocus={handleOpen}
-                    // onBlur={handleClose}
-                />
+            <div className="relative w-full focus:border-border-hover cursor-pointer" ref={selectRef} style={{ width }} onClick={toggleSelect}>
+                <label
+                    className={classNames(
+                        'border h-[50px] w-full rounded flex flex-col relative overflow-hidden duration-100 group gap-1',
+                        'outline-none'
+                    )}
+                >
+                    <div className='text-xs text-muted-foreground px-2 pt-1'>
+                        {label}
+                    </div>
+                    <span
+                        className={classNames(
+                            'outline-none border-none mt-[2px] w-full bg-transparent border-transparent text-xs px-2 h-full muted-text',
+                            { 'text-muted-foreground': !value.label }
+                        )}>
+                        {value.label || placeholder}
+                    </span>
+                </label>
                 {isOpen && (
                     <ul
                         onClick={() => closeOnSelfClick && handleClose()}
@@ -125,7 +131,7 @@ export const SelectOption = ({
             className={classNames(
                 selectOptionVariants({ size, variant, className }),
                 {
-                    'bg-secondary': isOptionSelected
+                    'bg-accent': isOptionSelected
                 })}
             onClick={handleChange}
         >

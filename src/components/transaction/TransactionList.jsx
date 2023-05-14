@@ -7,7 +7,7 @@ import TransactionItem from './TransactionItem';
 import Loader from '@components/app/Loader';
 
 const TransactionList = () => {
-    const gridTemplateColumns = '1fr';
+    const gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
     const { transactions, loading } = useTransaction();
 
     if (loading) {
@@ -15,21 +15,21 @@ const TransactionList = () => {
     }
     return (
         <>
-            <div style={{ gridTemplateColumns }} className='transaction-grid'>
-                {loading ? (
-                    <div className="flex items-center justify-center mt-20 flex-col gap-4">
-                        <Loader />
-                    </div>
-                ) : (
-                    <>
-                        {transactions.length === 0 && (
-                            <div className="flex items-center justify-center mt-20 flex-col gap-4">
-                                <HiOutlineInboxStack size={100} className='text-muted-foreground' />
-                                <div className="text-2xl muted-text text-muted-foreground">
-                                    No Transactions.
-                                </div>
+            {loading ? (
+                <div className="flex items-center justify-center mt-20 flex-col gap-4">
+                    <Loader />
+                </div>
+            ) :
+                <>
+                    {transactions.length === 0 && (
+                        <div className="flex items-center justify-center mt-20 flex-col gap-4">
+                            <HiOutlineInboxStack size={100} className='text-muted-foreground' />
+                            <div className="text-2xl muted-text text-muted-foreground">
+                                No Transactions.
                             </div>
-                        )}
+                        </div>
+                    )}
+                    <div style={{ gridTemplateColumns }} className='transaction-grid'>
                         {transactions.map(transaction => (
                             <TransactionItem
                                 key={transaction.id}
@@ -37,9 +37,9 @@ const TransactionList = () => {
                                 isGridView={false}
                             />
                         ))}
-                    </>
-                )}
-            </div >
+                    </div>
+                </>
+            }
         </>
     )
 }

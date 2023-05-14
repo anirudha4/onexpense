@@ -25,7 +25,6 @@ const Header = ({ }) => {
         { id: 1, label: 'Customize', route: PATHS.PROFILE, icon: <TbLayoutDashboard /> },
     ], [])
     const { user } = useUser();
-    console.log({ user });
     const { logout } = useAuth();
     return (
         <div className="

@@ -37,7 +37,7 @@ const TransactionItem = ({
                     </div>
                 </div>
                 <div className="text-sm flex items-center muted-text font-medium whitespace-nowrap">
-                    {type === 'expense' ? '-' : '+'} ₹ {amount}
+                    {type === 'Expense' ? '-' : '+'} ₹ {amount}
                 </div>
             </div>
         </Link>
