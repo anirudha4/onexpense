@@ -10,7 +10,6 @@ const TransactionItem = ({
     type,
     amount,
     categoryId,
-    isGridView
 }) => {
     const { getCategoryById } = useCategory();
     const category = useMemo(() => getCategoryById(categoryId), [categoryId]);
@@ -18,17 +17,9 @@ const TransactionItem = ({
     return (
         <Link to={PATHS.TRANSACTION.replace(':transaction_id', id)}>
             <div className={classNames(
-                'p-3 pr-4 flex gap-3 justify-between hover:bg-secondary duration-100 group cursor-pointer rounded-md',
-                {
-                    'items-start': isGridView
-                }
+                'p-3 pr-4 flex gap-3 justify-between hover:bg-secondary duration-100 group cursor-pointer rounded-md'
             )}>
                 <div className="flex gap-4 truncate">
-                    {/* <div className="h-10 w-10 min-h-10 max-h-10 rounded border group-hover:bg-accent flex items-center justify-center duration-100">
-                        {React.cloneElement(categoryIcon, {
-                            size: 18
-                        })}
-                    </div> */}
                     <div className="flex flex-col flex-1 gap-1 truncate">
                         <p className='text-sm font-medium truncate'>{name}</p>
                         <span className="text-muted-foreground muted-text text-xs">

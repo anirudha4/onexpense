@@ -5,7 +5,6 @@ import { Outlet } from 'react-router-dom'
 import FilterProvider from '@contexts/filter'
 import Appbar from '@components/app/Appbar'
 import { usePathSelector } from '@hooks'
-import DrawerProvider from '@components/common/Drawer'
 import TransactionDrawer from '@components/transaction/TransactionDrawer'
 
 const Layout = () => {
