@@ -2,8 +2,8 @@ import { getCollectionRef } from "@lib/firebase";
 import { onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
-const useCollection = (path) => {
-    const collectionRef = getCollectionRef(path);
+const useCollection = (path, query) => {
+    const collectionRef = getCollectionRef(path, query);
     const [entries, setEntries] = useState([]);
     const [loading, setLoading] = useState(true);
 

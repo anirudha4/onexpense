@@ -10,8 +10,9 @@ const AuthLayout = () => {
         return <Navigate to={PATHS.APP} />
     }
     return (
-        <div className="grid grid-cols-2 h-screen">
-            <div className="w-full bg-primary"></div>
+        <div className="grid grid-cols-1 h-screen sm:grid-cols-2">
+            <div className="relative -right-32 rounded-lg w-full bg-primary hidden sm:flex -skew-y-12 scale-75 items-center justify-center flex-col gap-2">
+            </div>
             <div className="max-w-[400px] w-full flex items-center justify-center flex-col m-auto">
                 <Outlet />
             </div>

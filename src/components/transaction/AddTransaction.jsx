@@ -1,10 +1,11 @@
 import Button from '@components/common/Button';
 import Form from '@components/common/Form';
 import SegmentedControl from '@components/common/Form/SegmentedControl';
-import Select, { SelectOption } from '@components/common/Form/Select';
+import Select from '@components/common/Form/Select/Select';
 import { COLLECTIONS } from '@config/collections';
 import { useCategory, useForm, useMutation, useUser } from '@hooks';
-import { useMemo, useRef } from 'react';
+import useModal from '@hooks/useModal';
+import { useEffect, useMemo, useRef } from 'react';
 
 const FORM_INITIAL_FIELDS = {
     name: '',
@@ -17,7 +18,7 @@ const FORM_INITIAL_FIELDS = {
 }
 const TRANSACTION_FORM_FIELDS = [
     { id: 'name', label: 'Name', type: 'text', name: 'name', placeholder: 'Eg. House Rent' },
-    // { id: 'description', label: 'Description', fieldType: 'textarea', name: 'description', placeholder: 'Few words about the transaction' },
+    { id: 'description', label: 'Description', fieldType: 'textarea', name: 'description', placeholder: 'Few words about the transaction' },
     { id: 'amount', label: 'Amount', type: 'number', name: 'amount', placeholder: 'Eg. 7500.00' },
     { id: 'categoryId', label: 'Category', fieldType: 'select', name: 'categoryId', placeholder: 'Eg. Rent' },
     // { id: 'paidTo', label: 'Paid To', fieldType: 'select', name: 'paidTo', placeholder: 'Eg. Land Lord' },
@@ -30,6 +31,7 @@ const TRANSACTION_FORM_FIELDS = [
 const AddTransaction = () => {
     const [form, handleChange, setData] = useForm(FORM_INITIAL_FIELDS);
     const { user } = useUser();
+    const { closeModal } = useModal();
 
     const formRef = useRef();
 
@@ -50,10 +52,22 @@ const AddTransaction = () => {
             type: form.type,
             userId: user.id
         }
-        await createTransaction(transactionValues);
-        setData(FORM_INITIAL_FIELDS);
+        try {
+            await createTransaction(transactionValues);
+            setData(FORM_INITIAL_FIELDS);
+        } catch (err) {
+            console.log({ err });
+        }
         formRef.current.name.focus();
     }
+
+    // effects
+    useEffect(() => {
+        // close modal on escape
+        const fn = e => e.key === 'Escape' && closeModal()
+        document.addEventListener('keydown', fn);
+        return () => document.removeEventListener('keydown', fn);
+    }, [])
 
     return (
         <Form onSubmit={handleSubmit} ref={formRef}>
@@ -70,13 +84,8 @@ const AddTransaction = () => {
                                 name={field.name}
                                 label={field.label}
                                 placeholder={field.placeholder}
-                            >
-                                {field.options?.map(option => (
-                                    <SelectOption option={option} key={option.id}>
-                                        {option.label}
-                                    </SelectOption>
-                                ))}
-                            </Select>
+                                options={field.options}
+                            />
                         )
                     case 'segmentedControl':
                         return <SegmentedControl
@@ -87,6 +96,8 @@ const AddTransaction = () => {
                             name={field.name}
                             id={field.id}
                         />
+                    case 'textarea':
+                        return <Form.Textarea key={field.id} onChange={handleChange} value={form[field.name]} id={field.id} name={field.name} label={field.label} placeholder={field.placeholder} rows={5} />
                     default:
                         return <Form.Input key={field.id} onChange={handleChange} value={form[field.name]} type={field.type} id={field.id} name={field.name} label={field.label} placeholder={field.placeholder} />
                 }

@@ -1,7 +1,8 @@
 import React, { forwardRef } from 'react'
 import Input from './Input'
 import classNames from 'classnames';
-import Select from './Select';
+import Select from './Select/Select';
+import Textarea from './Textarea';
 
 const Form = forwardRef(({ children, onSubmit, width, className, ...props }, ref) => {
     const handleSubmit = (e) => {
@@ -17,4 +18,5 @@ const Form = forwardRef(({ children, onSubmit, width, className, ...props }, ref
 
 Form.Input = Input;
 Form.Select = Select;
-export default Form
+Form.Textarea = Textarea;
+export default Form;

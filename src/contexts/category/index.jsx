@@ -5,7 +5,7 @@ import React, { createContext, useCallback, useMemo } from 'react'
 export const CategoryContext = createContext();
 const CategoryProvider = ({ children }) => {
     const { user } = useUser();
-    const { entries: categories } = useCollection(COLLECTIONS.CATEGORIES(user.id));
+    const { entries: categories } = useCollection(COLLECTIONS.CATEGORIES(user?.id));
 
     const categoriesById = useMemo(() => {
         const byId = {};

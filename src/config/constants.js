@@ -13,3 +13,10 @@ export const PATHS = {
     WALLETS: '/account/wallets',
 
 }
+
+
+export const TRANSACTION_TYPES = {
+    EXPENSE: 'Expense',
+    INCOME: 'Income',
+    INVESTMENT: 'Investment'
+}

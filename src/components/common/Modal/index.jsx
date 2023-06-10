@@ -2,7 +2,7 @@ import React, { cloneElement, createContext, useContext, useState } from 'react'
 import classNames from 'classnames';
 import { TbX } from 'react-icons/tb';
 
-const ModalContext = createContext();
+export const ModalContext = createContext();
 
 const Modal = ({ children, trigger }) => {
     const [open, setOpen] = useState(false);
@@ -30,17 +30,17 @@ Modal.Header = ({ title, withDivider }) => {
     const { closeModal } = useContext(ModalContext);
     return (
         <div className={classNames(
-            "flex items-center justify-between px-5 py-3",
+            "flex items-center justify-between px-5 py-4",
             {
                 'border-b': withDivider
             }
         )}>
-            <span className="font-medium">
+            <span className="font-medium text-lg">
                 {title}
             </span>
             <div
                 className='
-                    h-[24px] w-[24px] min-w-[24px] min-h-[24px] rounded flex items-center justify-center
+                    h-[30px] w-[30px] min-w-[30px] min-h-[30px] rounded flex items-center justify-center
                     cursor-pointer
                     hover:bg-secondary hover:text-secondary-foreground duration-75
                 '

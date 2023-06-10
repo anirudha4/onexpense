@@ -5,6 +5,7 @@ import useCollection from "./useCollection";
 import useFilter from "./useFilter";
 import useForm from "./useForm";
 import useMutation from "./useMutation";
+import usePathSelector from "./usePathSelector";
 import useTheme from "./useTheme";
 import useTransaction from "./useTransaction";
 import useUser from "./useUser";
@@ -19,5 +20,6 @@ export {
     useCollection,
     useCategory,
     useMutation,
-    useTransaction
+    useTransaction,
+    usePathSelector,
 }

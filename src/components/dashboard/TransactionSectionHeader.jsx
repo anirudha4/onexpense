@@ -16,7 +16,7 @@ const TransactionSectionHeader = () => {
                     You made {transactions.length} transactions this month.
                 </div>
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="sm:flex gap-2 items-center hidden">
                 <Modal trigger={(
                     <Button>
                         Add Transaction

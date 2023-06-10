@@ -1,30 +1,33 @@
-import React from 'react'
-import Stat from './Stat'
+import React, { useMemo } from 'react';
+import Stat from './Stat';
 import { BsCreditCard2Back } from 'react-icons/bs';
-import { TbTrendingDown, TbTrendingUp, TbBuildingBank } from 'react-icons/tb'
+import { TbTrendingDown, TbTrendingUp, TbBuildingBank } from 'react-icons/tb';
+import { useTransaction } from '@hooks';
 
 const Statistics = () => {
-    return (
+    const { getTransactionStatistics, transactions } = useTransaction();
+    const { total, income, expense } = useMemo(() => getTransactionStatistics(), [transactions]);
+     return (
         <div className='statistics-grid'>
             <Stat
                 title={'Total Balance'}
                 type="total"
                 icon={<BsCreditCard2Back />}
-                value={4000}
+                value={total}
                 muted={'+20% from last month'}
             />
             <Stat
                 title={'Expense'}
                 type="expense"
                 icon={<TbTrendingDown />}
-                value={2000}
+                value={expense}
                 muted={'-2% from last month'}
             />
             <Stat
                 title={'Income'}
                 type="income"
                 icon={<TbTrendingUp />}
-                value={6000}
+                value={income}
                 muted={'+17% from last month'}
             />
             <Stat

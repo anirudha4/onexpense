@@ -32,7 +32,7 @@ const TransactionItem = ({
                     <div className="flex flex-col flex-1 gap-1 truncate">
                         <p className='text-sm font-medium truncate'>{name}</p>
                         <span className="text-muted-foreground muted-text text-xs">
-                            {category.name}
+                            {category?.name ?? 'Others'}
                         </span>
                     </div>
                 </div>

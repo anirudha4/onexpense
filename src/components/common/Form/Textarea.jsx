@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import React, { memo } from 'react'
 
-const Input = ({ name, id, value, onChange, type, label, placeholder, className, ...props }) => {
+const Textarea = ({ name, id, value, onChange, type, label, placeholder, className, ...props }) => {
     const handleChange = e => {
         onChange(e.target.name, e.target.value);
     }
     return (
         <div className={classNames(
-            'border h-[50px] w-full rounded flex flex-col relative overflow-hidden duration-100 focus-within:border-border-hover group',
+            'border h-[120px] w-full rounded flex flex-col relative overflow-hidden duration-100 focus-within:border-border-hover group',
             className
         )}>
             <label className='
@@ -18,15 +18,15 @@ const Input = ({ name, id, value, onChange, type, label, placeholder, className,
             >
                 {label}
             </label>
-            <input
-                type={type}
+            <textarea
                 id={id}
                 name={name}
                 value={value}
                 onChange={handleChange}
                 placeholder={placeholder}
                 className='
-                    outline-none border-none w-full bg-transparent border-transparent text-xs px-2 h-full muted-text
+                    outline-none border-none mt-2 w-full bg-transparent border-transparent text-xs px-2 h-full muted-text
+                    resize-none
                 '
                 {...props}
             />
@@ -34,4 +34,4 @@ const Input = ({ name, id, value, onChange, type, label, placeholder, className,
     )
 }
 
-export default memo(Input);
+export default memo(Textarea);

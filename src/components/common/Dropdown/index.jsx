@@ -1,110 +1,49 @@
-import classNames from 'classnames';
-import React, { useState, useEffect, useRef } from 'react';
-import { cva } from 'class-variance-authority';
 
-const Dropdown = ({ children, trigger, width = 200, closeOnSelfClick = true }) => {
-    const [isOpen, setIsOpen] = useState(false);
+import { Menu, Transition } from '@headlessui/react'
+import classNames from 'classnames'
+import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
-    const dropdownRef = useRef();
-    const handleKeyDown = (event) => {
-        if (event.key === 'Escape') {
-            handleClose();
-        }
-    };
-
-    const handleClose = () => setIsOpen(false);
-
-    useEffect(() => {
-        document.addEventListener('keydown', handleKeyDown);
-        return () => {
-            document.removeEventListener('keydown', handleKeyDown);
-        };
-    }, []);
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                handleClose();
-            }
-        };
-
-        document.addEventListener('click', handleClickOutside);
-
-        return () => {
-            document.removeEventListener('click', handleClickOutside);
-        };
-    }, [dropdownRef]);
-
-
+export default function Dropdown({ options, trigger, width = 200 }) {
     return (
-        <div className="relative" ref={dropdownRef}>
-            {React.cloneElement(trigger, {
-                onClick: () => setIsOpen(!isOpen)
-            })}
-            {isOpen && (
-                <ul
-                    onClick={() => closeOnSelfClick && handleClose()}
-                    className={classNames(
-                        "absolute p-[4px] top-12 right-0 bg-background rounded-md border flex flex-col gap-1"
-                    )}
+        <Menu as="div" className="relative h-10">
+            <Menu.Button>
+                {trigger}
+            </Menu.Button>
+            <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+            >
+                <Menu.Items
                     style={{ width }}
+                    className={classNames(
+                        "absolute right-0 top-[110%] origin-top-right rounded bg-background shadow-lg focus:outline-none",
+                        "border"
+                    )}
                 >
-                    {children}
-                </ul>
-            )}
-        </div>
-    );
-};
-
-export const menuItemVariante = cva(
-    "inline-flex items-center  gap-2 rounded text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed w-full cursor-pointer",
-    {
-        variants: {
-            variant: {
-                default: "hover:text-primary hover:bg-primary-foreground",
-                destructive:
-                    "text-destructive hover:bg-destructive-foreground",
-                outline:
-                    "border border-input hover:bg-secondary hover:text-secondary-foreground",
-                secondary:
-                    "hover:text-secondary-foreground hover:bg-secondary",
-                ghost: "hover:bg-accent hover:text-accent-foreground",
-                link: "underline-offset-4 hover:underline text-primary",
-            },
-            size: {
-                default: "h-8 p-2",
-                sm: "h-9 px-3 rounded-md",
-                lg: "h-11 px-8 rounded-md",
-            },
-        },
-        defaultVariants: {
-            variant: "default",
-            size: "default",
-        },
-    }
-)
-
-const MenuItem = ({
-    children,
-    className,
-    onClick = null,
-    size = 'default',
-    variant = 'secondary',
-}) => {
-    return <li onClick={onClick} className={classNames(menuItemVariante({ size, variant, className }))}>
-        {children}
-    </li>;
-};
-
-const MenuLabel = ({
-    children
-}) => {
-    return <span className='px-2 text-muted-foreground text-xs'>{children}</span>
+                    <div className="px-1 py-1 flex flex-col">
+                        {options.map(option => (
+                            <Menu.Item as={option.as ?? Link} to={option.route} onClick={option.handler} key={option.id}>
+                                {({ active }) => (
+                                    <div className={classNames(
+                                        'py-1 px-3 h-8 text-sm rounded flex items-center gap-2',
+                                        'hover:bg-accent hover:text-accent-foreground',
+                                        { 'bg-accent text-accent-foreground': active }
+                                    )}>
+                                        {option.icon && option.icon}
+                                        {option.label}
+                                    </div>
+                                )}
+                            </Menu.Item>
+                        ))}
+                    </div>
+                </Menu.Items>
+            </Transition>
+        </Menu>
+    )
 }
-
-Dropdown.Item = MenuItem;
-Dropdown.Label = MenuLabel;
-
-
-
-export default Dropdown;

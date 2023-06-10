@@ -35,7 +35,7 @@ const UserProvider = ({ children }) => {
         } else {
             dispatch(userCreators.userNotFound());
         }
-    }, [isLoggedIn])
+    }, [])
 
     // prepare slice
     const values = {
